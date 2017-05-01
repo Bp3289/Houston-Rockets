@@ -1,0 +1,21 @@
+{
+  "name": "Houston-Rockets",
+  "homepage": "https://github.com/Bp3289/Houston-Rockets",
+  "authors": [
+    "YOUR-USERNAME <YOUR-EMAIL-ADDRESS>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4"
+  }
+}

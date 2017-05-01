@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Houston Rockets</title>
+	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
+	 <script src="bower_components/angular-route/angular-route.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+</head>
+<body ng-app="Rockets">
+
+<div ng-controller="RocketController as rocket">
+	
+
+	<div>
+
+{{rocket.helloWorld}}
+<h1>One Rocket: {{rocket.oneRocket}}</h1>
+<ul>
+		<li ng-repeat="rocket in rocket.allRockets">{{rocket.name}}</li>
+</ul>
+</div>
+
+<second-directive derogative="James Harden"></second-directive>
+<second-directive derogative="Nene"></second-directive>
+<ng-view></ng-view>
+</div>
+
+</body>
+</html>
