@@ -1,7 +1,7 @@
 angular.module("Rockets", ['ngRoute'])
 .controller("RocketController", RocketController)
 .directive('secondDirective', secondDirective)
-// .config(rocketRoster)
+.config(rocketRoster)
 .factory('Rockets', Rockets);
 
 
@@ -9,12 +9,24 @@ Rockets.$inject = ['$http'];
 function Rockets($http) {
 	var rocketMethods = {};
 	rocketMethods.getAllRockets = function (){
-		return $http.get("/players");
+		return $http.get("http://localhost:3000/players");
 	};
 	rocketMethods.getOneRocket = function(id) {
-		return $http.get("/players" + id);
+		return $http.get("http://localhost:3000/players/:id" + id);
 	};
 	return rocketMethods;
+}
+
+rocketRoster.$inject = ['$routeProvider'];
+
+function rocketRoster($routeProvider) {
+	$routeProvider 
+	.when('/players', {
+		templateUrl: 'templates/allRockets.html'
+	})
+	.when('/players/:id', {
+		templateUrl: '<h1>This is the about me page</h1>'
+	});
 }
 
 RocketController.$inject = ['Rockets'];

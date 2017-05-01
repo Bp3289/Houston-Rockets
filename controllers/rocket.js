@@ -2,8 +2,8 @@ var db = require('../models');
 
 
 //Get Index
-function getRockets (req, res, next){
-	db.Rocket.find({}, function(err, rockets){
+function getAllRockets (req, res, next){
+	db.Player.find({}, function(err, rockets){
       //has to be lowercase
       res.json(rockets);
     });
@@ -12,7 +12,7 @@ function getRockets (req, res, next){
 
 //Get One
 function getOneRocket (req, res, next) {
-	db.Rocket.findOne({_id: req.params.id}, function(err, rocket){
+	db.Player.findOne({_id: req.params.id}, function(err, rocket){
 		res.json(rocket);
 	});
 }
@@ -34,7 +34,7 @@ function getOneRocket (req, res, next) {
 
 
 module.exports = {
-	getRockets: getRockets,
+	getAllRockets: getAllRockets,
 	getOneRocket: getOneRocket,
 	
 };
