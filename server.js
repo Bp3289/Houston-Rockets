@@ -13,31 +13,34 @@ var db = require('./models');
 
 app.use(express.static(__dirname + '/frontend/'));
 
-var routes = require('./frontend/config/routes');
-app.use(routes);
+// var routes = require('./frontend/config/routes');
+// app.use(routes);
 
 
 
-function getHome(req, res, next){
-	res.sendFile(__dirname + '/frontend/index.html');
-}
+// app.get('/', function index(req, res){
+// 	res.sendFile(__dirname + '/frontend/index.html');
+// });
 
 
 //Get Index
-function getAllRockets (req, res, next){
+app.get('/players', function show(req,res){
 	db.Player.find({}, function(err, rockets){
       //has to be lowercase
       res.json(rockets);
     });
     
-}
+});
 
 //Get One
-function getOneRocket (req, res, next) {
+app.get('/players/:id', function show(req, res){
+
 	db.Player.findOne({_id: req.params.id}, function(err, rocket){
 		res.json(rocket);
 	});
-}
+});
+
+
 
 
 

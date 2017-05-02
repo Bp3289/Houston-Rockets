@@ -1,27 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>One Rocket</title>
-	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-	 <script src="bower_components/angular-route/angular-route.min.js"></script>
-	 <script src="./frontend/controllers/rocket.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-</head>
-<body ng-app="Rockets">
 
-<section ng-controller="RocketControllerId as rocket">
+
+
+
 
 <div> 
 
-	<li ng-repeat="player in rocket.allRockets">{{player.name}}</li>
 
-	
+	<h1>{{rocketId.player.points}} ppg</h1>
 
 </div>
-	
- <a href="/players/{{player._id}}"><button class="btn-primary">About</button></a>
+
 
 </section>
-
-</body>
-</html>

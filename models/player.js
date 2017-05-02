@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 
 var PlayerSchema = new Schema({
    name: String,
+   points: Number,
   });
 
 

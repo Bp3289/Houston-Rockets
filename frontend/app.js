@@ -1,7 +1,7 @@
 var app = angular.module("Rockets", ['ngRoute'])
 .controller("RocketController", RocketController)
 .controller("RocketControllerId", RocketControllerId)
-// .config(rocketRoster)
+.config(rocketRoster)
 .factory('Rockets', Rockets);
 
 
@@ -17,24 +17,24 @@ function Rockets($http) {
 	return rocketMethods;
 }
 
-// rocketRoster.$inject = ['$routeProvider', '$locationProvider'];
+rocketRoster.$inject = ['$routeProvider', '$locationProvider'];
 
-app.config(function($routeProvider, $locationProvider){
+function rocketRoster($routeProvider, $locationProvider){
 	$routeProvider 
 	.when('/', {
 		templateUrl: 'templates/allRockets.html',
-		controller: 'RocketController'
+		controller: 'RocketController as rocket'
 	})
 	.when('/players/:id', {
 		templateUrl: '/templates/oneRocket.html',
-		controller: 'RocketControllerId'
+		controller: 'RocketControllerId as rocketId'
 	});
 
 		$locationProvider.html5Mode({
 			enabled: true,
 			requireBase: false
 		});
-});
+}
 
 RocketController.$inject = ['$scope', '$http'];
 function RocketController($scope, $http) {
@@ -50,24 +50,29 @@ function RocketController($scope, $http) {
 	    .get("http://localhost:3000/players/")
 	    .then(function(response){
 	      console.log(response.data);
-	      self.all = response.data;
+	      self.allRockets = response.data;
 	    });
+	    this.update = function() {
+	    	console.log("rocket is changing");
+	    };
 	}
 
-	RocketControllerId.$inject = ['$http','$scope', '$routeParams'];
+	
+
+}
+
+RocketControllerId.$inject = ['$http','$scope', '$routeParams'];
 	function RocketControllerId($http, $scope, $routeParams){
+			var self = this;
+	
+
+
 			$http
 		.get("http://localhost:3000/players/" + $routeParams.id)
 		.then(function(response){
 			console.log($routeParams.id + "Id");
 			console.log(response.data + "here is the data");
-			$scope.player = response.data;
+			self.player = response.data;
 		});
 
-	}
-	
-	
-	
-
-
-}
+		}

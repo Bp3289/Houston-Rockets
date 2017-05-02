@@ -5,25 +5,32 @@ var db = require('./models');
 var player_list = [
    
       {
-      "name": "James Harden"
+      "name": "James Harden",
+      "points": 28
       },
       {
-        "name": "Patrick Beverley"
+        "name": "Patrick Beverley",
+         "points": 15
       },
       {
-        "name": "Trevor Ariza"
+        "name": "Trevor Ariza",
+         "points": 13
       },
       {
-        "name": "Nene"
+        "name": "Nene",
+         "points": 13
       },
       {
-        "name": "Eric Gordon"
+        "name": "Eric Gordon",
+         "points": 17
       },
       {
-        "name": "Lou Williams"
+        "name": "Lou Williams",
+         "points": 19
       },
       {
-        "name": "Clint Capela"
+        "name": "Clint Capela",
+         "points": 12
       }
     ];
 
