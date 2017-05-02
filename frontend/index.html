@@ -4,14 +4,17 @@
 	<title>Houston Rockets</title>
 	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 	 <script src="bower_components/angular-route/angular-route.min.js"></script>
+	 <script type='config/routes'></script>
+	<script src="controllers/rocket.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 </head>
 <body ng-app="Rockets">
 
-<div>
-	<a href="#!/">Home</a>
-	<a href="#!/players">Roster</a>
+<h1>Houston Rockets Roster</h1>
 
+<div>
+		<a href="#!/">Home</a>
+		<a href="#!/players">About Player</a>
 	</div>
 
 <div ng-controller="RocketController">

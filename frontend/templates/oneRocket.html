@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Houston Rockets</title>
+	<title>One Rocket</title>
 	<script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
 	 <script src="bower_components/angular-route/angular-route.min.js"></script>
 	 <script src="./frontend/controllers/rocket.js"></script>
@@ -9,14 +9,17 @@
 </head>
 <body ng-app="Rockets">
 
+<section ng-controller="RocketControllerId as rocket">
 
-<section ng-controller="RocketController as rocket">
-<div>
+<div> 
 
-<ul>
-		<li ng-repeat="player in rocket.allRockets">{{player.name}}</li>
-</ul>
+	<li ng-repeat="player in rocket.allRockets">{{player.name}}</li>
+
+	
+
 </div>
+	
+ <a href="/players/{{player._id}}"><button class="btn-primary">About</button></a>
 
 </section>
 

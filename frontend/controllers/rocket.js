@@ -1,9 +1,9 @@
-var db = require('../models');
+var db = require('../../models');
 
 
 
 function getHome(req, res, next){
-	res.sendFile(__dirname + '/front/index.html');
+	res.sendFile(__dirname + '/frontend/index.html');
 }
 
 

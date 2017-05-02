@@ -1,7 +1,7 @@
-angular.module("Rockets", ['ngRoute'])
+var app = angular.module("Rockets", ['ngRoute'])
 .controller("RocketController", RocketController)
-.directive('secondDirective', secondDirective)
-.config(rocketRoster)
+.controller("RocketControllerId", RocketControllerId)
+// .config(rocketRoster)
 .factory('Rockets', Rockets);
 
 
@@ -17,9 +17,9 @@ function Rockets($http) {
 	return rocketMethods;
 }
 
-rocketRoster.$inject = ['$routeProvider', '$locationProvider'];
+// rocketRoster.$inject = ['$routeProvider', '$locationProvider'];
 
-function rocketRoster($routeProvider, $locationProvider) {
+app.config(function($routeProvider, $locationProvider){
 	$routeProvider 
 	.when('/', {
 		templateUrl: 'templates/allRockets.html',
@@ -29,22 +29,45 @@ function rocketRoster($routeProvider, $locationProvider) {
 		templateUrl: '/templates/oneRocket.html',
 		controller: 'RocketControllerId'
 	});
-}
 
-RocketController.$inject = ['Rockets'];
-function RocketController(Rockets) {
-	console.log("Hey guys");
-	var vm = this;
-	vm.helloWorld = ('HEy people!');
-	Rockets.getOneRocket(3).then(function(response) {
-		vm.oneRocket = response.data;
-	});
-	Rockets.getAllRockets().then(function(response){
-		vm.allRockets = response.data;
-	});
-	this.update = function() {
-		console.log("input is changing");
-	};
+		$locationProvider.html5Mode({
+			enabled: true,
+			requireBase: false
+		});
+});
+
+RocketController.$inject = ['$scope', '$http'];
+function RocketController($scope, $http) {
+	
+	var self = this;
+	self.all = [];
+	self.getAllRockets = getAllRockets;
+	
+	getAllRockets();
+
+	function getAllRockets(){
+		$http
+	    .get("http://localhost:3000/players/")
+	    .then(function(response){
+	      console.log(response.data);
+	      self.all = response.data;
+	    });
+	}
+
+	RocketControllerId.$inject = ['$http','$scope', '$routeParams'];
+	function RocketControllerId($http, $scope, $routeParams){
+			$http
+		.get("http://localhost:3000/players/" + $routeParams.id)
+		.then(function(response){
+			console.log($routeParams.id + "Id");
+			console.log(response.data + "here is the data");
+			$scope.player = response.data;
+		});
+
+	}
+	
+	
+	
 
 
 }
