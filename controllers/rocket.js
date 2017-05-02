@@ -1,6 +1,12 @@
 var db = require('../models');
 
 
+
+function getHome(req, res, next){
+	res.sendFile(__dirname + '/front/index.html');
+}
+
+
 //Get Index
 function getAllRockets (req, res, next){
 	db.Player.find({}, function(err, rockets){
@@ -34,6 +40,7 @@ function getOneRocket (req, res, next) {
 
 
 module.exports = {
+	getHome: getHome,
 	getAllRockets: getAllRockets,
 	getOneRocket: getOneRocket,
 	

@@ -5,6 +5,9 @@ var router = express.Router();
 
 var rocketController = require('../controllers/rocket');
 
+router.route('/')
+.get(rocketController.getHome);
+
 router.route('/players')
 .get(rocketController.getAllRockets);
 

@@ -14,20 +14,9 @@
 
 	</div>
 
-<div ng-controller="RocketController as rocket">
+<div ng-controller="RocketController">
 	
 
-	<div>
-
-{{rocket.helloWorld}}
-<h1>One Rocket: {{rocket.oneRocket}}</h1>
-<ul>
-		<li ng-repeat="rocket in rocket.allRockets">{{rocket.name}}</li>
-</ul>
-</div>
-
-<second-directive derogative="James Harden"></second-directive>
-<second-directive derogative="Nene"></second-directive>
 <ng-view></ng-view>
 </div>
 

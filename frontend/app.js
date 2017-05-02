@@ -12,20 +12,22 @@ function Rockets($http) {
 		return $http.get("http://localhost:3000/players");
 	};
 	rocketMethods.getOneRocket = function(id) {
-		return $http.get("http://localhost:3000/players/:id" + id);
+		return $http.get("http://localhost:3000/players/:id");
 	};
 	return rocketMethods;
 }
 
-rocketRoster.$inject = ['$routeProvider'];
+rocketRoster.$inject = ['$routeProvider', '$locationProvider'];
 
-function rocketRoster($routeProvider) {
+function rocketRoster($routeProvider, $locationProvider) {
 	$routeProvider 
-	.when('/players', {
-		templateUrl: 'templates/allRockets.html'
+	.when('/', {
+		templateUrl: 'templates/allRockets.html',
+		controller: 'RocketController'
 	})
 	.when('/players/:id', {
-		templateUrl: '<h1>This is the about me page</h1>'
+		templateUrl: '/templates/oneRocket.html',
+		controller: 'RocketControllerId'
 	});
 }
 
@@ -43,16 +45,6 @@ function RocketController(Rockets) {
 	this.update = function() {
 		console.log("input is changing");
 	};
-}
 
-function secondDirective() {
-	return {
-		restrict: 'EA',
-		replace: true,
-		templateUrl: 'templates/secondDirective.html',
-		scope: {
-			derogative: '@'
-		}
-	};
 
 }
